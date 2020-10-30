@@ -1,0 +1,19 @@
+server:
+  port: 8888
+management:
+  security:
+    enabled: false
+spring:
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:db-space-project/service-config.git
+          private_key_file: ~/.ssh/id_rsa
+          passphrase: dododuck
+          skipSslValidation: true
+          default-label: main
+          search-paths: dbconnection
+      label: main

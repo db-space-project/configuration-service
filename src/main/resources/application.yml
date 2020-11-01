@@ -16,4 +16,6 @@ spring:
           skipSslValidation: true
           default-label: main
           search-paths: dbconnection
+        encrypt:
+          enabled: false #Disable the server-side decryption
       label: main

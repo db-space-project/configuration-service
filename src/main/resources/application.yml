@@ -2,8 +2,12 @@ server:
   port: 5050
 
 spring:
+  application:
+    name: configuration
+  devtools:
+    add-properties: false
   profiles:
-    active: dev,git
+    active: git
   cloud:
     loadbalancer:
       ribbon:

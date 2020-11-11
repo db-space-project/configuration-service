@@ -1,12 +1,18 @@
 server:
-  port: 8888
-management:
-  security:
-    enabled: false
+  port: 5050
+
 spring:
   profiles:
-    active: git
+    active: dev,git
   cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    consul:
+      host: 127.0.0.1
+      discovery:
+        prefer-ip-address: true
+        instanceId: ${spring.application.name}-service:${spring.application.instance_id:${random.value}}
     config:
       server:
         git:
@@ -15,7 +21,6 @@ spring:
           passphrase: dododuck
           skipSslValidation: true
           default-label: main
-          search-paths: dbconnection
+          search-paths: dbconnection,organization,gateway
         encrypt:
-          enabled: false #Disable the server-side decryption
-      label: main
+          enabled: false # Disable the server-side decryption
